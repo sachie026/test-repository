@@ -1,40 +1,50 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 import Step1 from "./step1";
 import Step2 from "./step2";
 
-function Modal() {
-  const [currentStep, setCurrentStep] = useState(1);
-  const [showModal, setShowModal] = useState(false);
+import { ENDPOINT } from "../../utils/constant";
 
-  const updateModal = () => {
-    setShowModal(!showModal);
-  };
+interface Props {
+  showModal: boolean;
+  updateModal: () => void;
+}
+
+function Modal({ showModal, updateModal }: Props) {
+  const [currentStep, setCurrentStep] = useState(1);
 
   const updateCurrentStep = (index: number) => {
     setCurrentStep(index);
   };
 
   const onSave = () => {
-    setShowModal(false);
+    updateModal();
     setCurrentStep(1);
   };
 
-  return (
-    <>
-      <button
-        className="block text-superWhite bg-blue hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        type="button"
-        onClick={updateModal}
-      >
-        Create job
-      </button>
+  function createPost() {
+    axios
+      .post(ENDPOINT, {
+        title: "Hello World!",
+        body: "This is a new post.",
+      })
+      .then((response) => {
+        // setPost(response.data);
+      });
+  }
 
-      {showModal && currentStep === 1 && (
-        <Step1 updateCurrentStep={updateCurrentStep} />
-      )}
-      {showModal && currentStep === 2 && <Step2 onSave={onSave} />}
-    </>
+  return (
+    <div className="flex justify-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-black bg-opacity-75 items-center">
+      <div className="relative w-2/4 my-6 mx-auto max-w-3xl ">
+        <div className="p-8 border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none bg-superWhite">
+          {showModal && currentStep === 1 && (
+            <Step1 updateCurrentStep={updateCurrentStep} />
+          )}
+          {showModal && currentStep === 2 && <Step2 onSave={onSave} />}
+        </div>
+      </div>
+    </div>
   );
 }
 
