@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 
 import Step1 from "./step1";
 import Step2 from "./step2";
 
-import { ENDPOINT } from "../../utils/constant";
+// import { ENDPOINT } from "../../utils/constant";
 
 interface Props {
   showModal: boolean;
