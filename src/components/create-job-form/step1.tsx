@@ -1,7 +1,5 @@
 import React from "react";
 
-import Label from "../info-label/label";
-import AsteriskIcon from "../../assets/asterisk";
 import Input from "../input-with-label/input";
 
 interface Props {

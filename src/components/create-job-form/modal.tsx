@@ -23,16 +23,16 @@ function Modal({ showModal, updateModal }: Props) {
     setCurrentStep(1);
   };
 
-  function createPost() {
-    axios
-      .post(ENDPOINT, {
-        title: "Hello World!",
-        body: "This is a new post.",
-      })
-      .then((response) => {
-        // setPost(response.data);
-      });
-  }
+  //   function createPost() {
+  //     axios
+  //       .post(ENDPOINT, {
+  //         title: "Hello World!",
+  //         body: "This is a new post.",
+  //       })
+  //       .then((response) => {
+  //         // setPost(response.data);
+  //       });
+  //   }
 
   return (
     <div className="flex justify-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-black bg-opacity-75 items-center">

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import Modal from "./components/create-job-form";
-import Job from "./components/jobs/job";
 import JobList from "./components/jobs";
 
 function App() {
