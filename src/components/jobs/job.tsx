@@ -79,7 +79,7 @@ function Job({ data, deleteJob, getJobs }: Props) {
         />
       )}
 
-      <div className="block mb-2 text-xl font-light text-gray-900 text-left">
+      <div className="block text-xl font-light text-gray-900 text-left">
         <div className="grid grid-flow-col auto-cols-max">
           <LogoIcon />
 
@@ -87,7 +87,7 @@ function Job({ data, deleteJob, getJobs }: Props) {
             <div className="mb-6">
               <div className="font-medium text-xl">{title}</div>
               <InfoRow info={`${company} - ${industry}`} />
-              <InfoRow info={`${location} - ${type}`} classes="text-gray" />
+              <InfoRow info={`${location} (${type})`} classes="text-gray" />
             </div>
 
             <div className="mb-6">
