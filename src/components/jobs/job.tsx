@@ -2,9 +2,15 @@ import React, { useState } from "react";
 
 import DeleteIcon from "../../assets/delete";
 import EditIcon from "../../assets/edit";
-import { APPLY_NOW_LABEL, LOGO_SIZE } from "../../utils/constant";
+import {
+  APPLY_NOW_LABEL,
+  EAPPLY_LABEL,
+  MB2,
+  QAPPLY_KEY,
+} from "../../utils/constant";
 import InfoRow from "./info-row";
 import Modal from "../create-job-form";
+import LogoIcon from "../../assets/comp-logo";
 
 export interface JobProps {
   title: string;
@@ -27,6 +33,9 @@ interface Props {
   getJobs: () => void;
 }
 
+const EAPPLY_BUTTON_CLASSES = "bg-transparent text-blue border border-blue";
+const QAPPLY_BUTTON_CLASSES = "bg-blue text-superWhite";
+
 function Job({ data, deleteJob, getJobs }: Props) {
   const [showModal, setShowModal] = useState(false);
   const [jobData, setJobData] = useState({ ...data });
@@ -41,8 +50,14 @@ function Job({ data, deleteJob, getJobs }: Props) {
     minsal,
     maxsal,
     employeecnt,
+    applytype,
     id,
   } = jobData;
+
+  const jobTimeInfo = `Part-time (9.00am - 5.00pm IST)`;
+  const expInfo = `Experience (${minexp} - ${maxexp} years)`;
+  const salInfo = `INR (R) ${minsal} - ${maxsal} / month`;
+  const empInfo = `${employeecnt || "NA"} employees`;
 
   const updateModal = () => {
     setShowModal(!showModal);
@@ -66,12 +81,7 @@ function Job({ data, deleteJob, getJobs }: Props) {
 
       <div className="block mb-2 text-xl font-light text-gray-900 text-left">
         <div className="grid grid-flow-col auto-cols-max">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Netflix_icon.svg/2048px-Netflix_icon.svg.png"
-            alt="company-logo"
-            width={LOGO_SIZE}
-            className="mr-2"
-          />
+          <LogoIcon />
 
           <div>
             <div className="mb-6">
@@ -81,33 +91,26 @@ function Job({ data, deleteJob, getJobs }: Props) {
             </div>
 
             <div className="mb-6">
-              <InfoRow
-                info={`Part-time (9.00am - 5.00pm IST)`}
-                classes="mb-2"
-              />
-              <InfoRow
-                info={`Experience (${minexp} - ${maxexp} years)`}
-                classes="mb-2"
-              />
-              <InfoRow
-                info={`INR (R) ${minsal} - ${maxsal} / month`}
-                classes="mb-2"
-              />
-              <InfoRow
-                info={`${employeecnt || "NA"} employees`}
-                classes="mb-2"
-              />
+              <InfoRow info={jobTimeInfo} classes={MB2} />
+              <InfoRow info={expInfo} classes={MB2} />
+              <InfoRow info={salInfo} classes={MB2} />
+              <InfoRow info={empInfo} classes={MB2} />
             </div>
 
             <button
               type="submit"
-              className="block text-superWhite bg-blue hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 "
+              className={`block  ${
+                applytype === QAPPLY_KEY
+                  ? QAPPLY_BUTTON_CLASSES
+                  : EAPPLY_BUTTON_CLASSES
+              } hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5`}
             >
-              {APPLY_NOW_LABEL}
+              {applytype === QAPPLY_KEY ? APPLY_NOW_LABEL : EAPPLY_LABEL}
             </button>
           </div>
         </div>
       </div>
+
       <div className="flex justify-end">
         <EditIcon mr="mr-4" clickHandler={updateModal} />
         <DeleteIcon clickHandler={() => deleteJob(id || "")} />

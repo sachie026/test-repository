@@ -23,10 +23,25 @@ export const EMPLOYEE_LABEL = "Total employee";
 export const EMPLOYEE_PLACEHOLDER = "ex: 100";
 export const QAPPLY_LABEL = "Quick Apply";
 export const EAPPLY_LABEL = "External Apply";
-export const APPLY_NOW_LABEL = "Apply now";
+export const APPLY_NOW_LABEL = "Apply Now";
 
 // schema keys
 export const TITLE_KEY = "title";
+export const APPLY_TYPE_KEY = "applytype";
+export const QAPPLY_KEY = "qapply";
+export const EAPPLY_KEY = "eapply";
+export const COMPANY_KEY = "company";
+export const INDUSTRY_KEY = "industry";
+export const MINEXP_KEY = "minexp";
+export const MAXEXP_KEY = "maxexp";
+export const LOCATION_KEY = "location";
+export const TYPE_KEY = "type";
+export const MINSAL_KEY = "minsal";
+export const MAXSAL_KEY = "maxsal";
+export const EMPCOUNT_KEY = "employeecnt";
+
+// box modal params
+export const MB2 = "mb-2";
 
 export const ENDPOINT =
   "https://64c25fc4eb7fd5d6ebcfbbc4.mockapi.io/api/job-portal/v1/jobs";

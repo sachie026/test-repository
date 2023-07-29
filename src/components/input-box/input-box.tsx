@@ -22,6 +22,7 @@ function InputBox({
   const onChangeHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
     changeHandler(fieldKey, e.target.value);
   };
+
   const component = (
     <input
       type={type}

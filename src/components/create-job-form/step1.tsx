@@ -4,19 +4,24 @@ import Header from "./header";
 import Input from "../input-with-label/input";
 import Footer from "./footer";
 import {
+  COMPANY_KEY,
   COMPANY_NAME_LABEL,
   COMPANY_NAME_PLACEHOLDER,
   CREATE_JOB_TITLE,
+  INDUSTRY_KEY,
   INDUSTRY_LABEL,
   INDUSTRY_PLACEHOLDER,
   JOB_TITLE_LABEL,
   JOB_TITLE_PLACEHOLDER,
+  LOCATION_KEY,
   LOCATION_LABEL,
   LOCATION_PLACEHOLDER,
   NEXT_LABEL,
   RTYPE_LABEL,
   RTYPE_PLACEHOLDER,
   STEP1_LABEL,
+  TITLE_KEY,
+  TYPE_KEY,
 } from "../../utils/constant";
 import { JobProps } from "../jobs/job";
 
@@ -44,7 +49,7 @@ function Step1({
           text={JOB_TITLE_LABEL}
           placeholder={JOB_TITLE_PLACEHOLDER}
           value={title}
-          fieldKey="title"
+          fieldKey={TITLE_KEY}
           changeHandler={updateTheField}
           isRequired
         />
@@ -52,7 +57,7 @@ function Step1({
           text={COMPANY_NAME_LABEL}
           placeholder={COMPANY_NAME_PLACEHOLDER}
           value={company}
-          fieldKey="company"
+          fieldKey={COMPANY_KEY}
           changeHandler={updateTheField}
           isRequired
         />
@@ -60,7 +65,7 @@ function Step1({
           text={INDUSTRY_LABEL}
           placeholder={INDUSTRY_PLACEHOLDER}
           value={industry}
-          fieldKey="industry"
+          fieldKey={INDUSTRY_KEY}
           changeHandler={updateTheField}
           isRequired
         />
@@ -71,7 +76,7 @@ function Step1({
           text={LOCATION_LABEL}
           placeholder={LOCATION_PLACEHOLDER}
           value={location}
-          fieldKey="location"
+          fieldKey={LOCATION_KEY}
           changeHandler={updateTheField}
           wrap
         />
@@ -79,7 +84,7 @@ function Step1({
           text={RTYPE_LABEL}
           placeholder={RTYPE_PLACEHOLDER}
           value={type}
-          fieldKey="type"
+          fieldKey={TYPE_KEY}
           changeHandler={updateTheField}
           wrap
         />

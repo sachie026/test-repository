@@ -6,10 +6,10 @@ interface Props {
 function Header({ title, subTitle }: Props) {
   return (
     <div className="grid gap-6 mb-6 md:grid-cols-2">
-      <label className="block mb-2 text-xl font-light text-gray-900 dark:text-white text-left">
+      <label className="block mb-2 text-xl font-light text-gray-900  text-left">
         {title}
       </label>
-      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-right">
+      <label className="block mb-2 text-sm font-medium text-gray-900  text-right">
         {subTitle}
       </label>
     </div>
