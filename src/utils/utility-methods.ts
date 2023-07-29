@@ -9,8 +9,6 @@ export const step1Validation = (data: JobProps): ErrorObj => {
   let errMsg = "Missing required fields:";
   let isValid = true;
 
-  console.log("step1Validation called");
-
   if (!data.title.trim()) {
     isValid = false;
     errMsg += " [Job title]";

@@ -88,8 +88,22 @@ function Modal({ showModal, updateModal, data, getJobs, updatedData }: Props) {
   };
 
   return (
-    <div className="flex justify-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-black bg-opacity-75 items-center">
-      <div className="relative w-2/4 my-6 mx-auto max-w-3xl ">
+    <div
+      id="modal-container"
+      className="flex justify-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-black bg-opacity-75 items-center"
+      onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        if (e.currentTarget.id === "modal-container") {
+          updateModal();
+        }
+      }}
+    >
+      <div
+        id="modal-wrapper"
+        className="relative w-2/4 my-6 mx-auto max-w-3xl "
+        onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+          e.stopPropagation();
+        }}
+      >
         <div className="p-8 border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none bg-superWhite">
           {showModal && currentStep === 1 && (
             <Step1
