@@ -2,9 +2,8 @@ import React, { useState } from "react";
 
 import DeleteIcon from "../../assets/delete";
 import EditIcon from "../../assets/edit";
-import { APPLY_NOW_LABEL, ENDPOINT, LOGO_SIZE } from "../../utils/constant";
+import { APPLY_NOW_LABEL, LOGO_SIZE } from "../../utils/constant";
 import InfoRow from "./info-row";
-import axios from "axios";
 import Modal from "../create-job-form";
 
 export interface JobProps {
