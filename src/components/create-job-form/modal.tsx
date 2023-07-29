@@ -6,6 +6,7 @@ import Step2 from "./step2";
 import { JobProps } from "../jobs/job";
 import { ENDPOINT } from "../../utils/constant";
 import { ErrorObj, step1Validation } from "../../utils/utility-methods";
+import Loader from "../../assets/loader";
 
 interface Props {
   showModal: boolean;
@@ -20,6 +21,7 @@ function Modal({ showModal, updateModal, data, getJobs, updatedData }: Props) {
   const [currentStep, setCurrentStep] = useState(1);
   const [stepError, setStepError] = useState(false);
   const [stepErrorMsg, setStepErrorMsg] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const [endpointData, setEndpointData] = useState<JobProps>({
     title: data ? data.title : "",
@@ -49,16 +51,22 @@ function Modal({ showModal, updateModal, data, getJobs, updatedData }: Props) {
   };
 
   const createJob = () => {
-    axios.post(ENDPOINT, { ...endpointData }).then((response) => {
-      if (response.status === 201) {
-        getJobs();
-        updateModal();
-      }
-    });
+    setLoading(true);
+    axios
+      .post(ENDPOINT, { ...endpointData })
+      .then((response) => {
+        if (response.status === 201) {
+          getJobs();
+          updateModal();
+        }
+        setLoading(false);
+      })
+      .catch((e) => setLoading(false));
   };
 
   const updateJob = async () => {
     let id = data ? data.id : "";
+    setLoading(true);
     await axios
       .put(`${ENDPOINT}/${id}`, {
         ...endpointData,
@@ -68,7 +76,9 @@ function Modal({ showModal, updateModal, data, getJobs, updatedData }: Props) {
           updatedData && updatedData(response.data);
           updateModal();
         }
-      });
+        setLoading(false);
+      })
+      .catch((e) => setLoading(false));
   };
 
   const updateTheField = (key: string, val: string) => {
@@ -97,6 +107,7 @@ function Modal({ showModal, updateModal, data, getJobs, updatedData }: Props) {
         }
       }}
     >
+      {loading && <Loader />}
       <div
         id="modal-wrapper"
         className="relative w-2/4 my-6 mx-auto max-w-3xl "

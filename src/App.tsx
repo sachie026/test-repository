@@ -5,6 +5,7 @@ import Modal from "./components/create-job-form";
 import JobList from "./components/jobs";
 import { CREATE_JOB_TITLE, ENDPOINT } from "./utils/constant";
 import { JobProps } from "./components/jobs/job";
+import Loader from "./assets/loader";
 
 function App() {
   const [showModal, setShowModal] = useState(false);
@@ -55,9 +56,8 @@ function App() {
               getJobs={getJobs}
             />
           )}
+          {loading && <Loader />}
           {jobs && !loading && <JobList jobs={[...jobs]} getJobs={getJobs} />}
-
-          {loading && "loading..."}
         </div>
       </div>
     </div>
