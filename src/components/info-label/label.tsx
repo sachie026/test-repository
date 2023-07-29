@@ -9,7 +9,7 @@ interface Props {
 function Label({ isRequired, text }: Props) {
   return (
     <>
-      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left">
+      <label className="block mb-2 text-sm font-medium text-gray-900  text-left">
         {text}
       </label>
       {isRequired && <AsteriskIcon />}

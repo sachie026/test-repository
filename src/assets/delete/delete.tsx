@@ -2,9 +2,10 @@ import React from "react";
 
 interface Props {
   mr?: string;
+  clickHandler?: () => void;
 }
 
-function DeleteIcon({ mr = "" }: Props) {
+function DeleteIcon({ mr = "", clickHandler }: Props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13,6 +14,7 @@ function DeleteIcon({ mr = "" }: Props) {
       strokeWidth={1.5}
       stroke="currentColor"
       className={`w-6 h-6 ${mr} cursor-pointer`}
+      onClick={clickHandler}
     >
       <path
         strokeLinecap="round"

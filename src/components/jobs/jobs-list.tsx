@@ -1,12 +1,36 @@
 import React from "react";
-import Job from "./job";
+import axios from "axios";
 
-function JobList() {
-  const arr = new Array(5).fill(0);
+import Job, { JobProps } from "./job";
+import { ENDPOINT } from "../../utils/constant";
+
+interface Props {
+  jobs: JobProps[] | [];
+  getJobs: () => void;
+}
+
+function JobList({ jobs, getJobs }: Props) {
+  const deleteJob = (id: string) => {
+    axios.delete(`${ENDPOINT}/${id}`).then((response) => {
+      if (response.status === 200) {
+        getJobs();
+      }
+    });
+  };
+
+  const reversedJobs = [...jobs.reverse()].reverse();
+
   return (
     <div className="grid gap-6 mb-6 md:grid-cols-2">
-      {arr.map((elem, index) => {
-        return <Job key={index} />;
+      {[...reversedJobs].map((job, index) => {
+        return (
+          <Job
+            key={`${job.id}${index}`}
+            data={job}
+            deleteJob={deleteJob}
+            getJobs={getJobs}
+          />
+        );
       })}
     </div>
   );

@@ -2,9 +2,10 @@ import React from "react";
 
 interface Props {
   mr?: string;
+  clickHandler?: () => void;
 }
 
-function EditIcon({ mr = "" }: Props) {
+function EditIcon({ mr = "", clickHandler }: Props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12,6 +13,7 @@ function EditIcon({ mr = "" }: Props) {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
+      onClick={clickHandler}
       className={`w-6 h-6 ${mr} cursor-pointer`}
     >
       <path
