@@ -2,6 +2,14 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Deployed App
+
+App is deployed on netlify and here is the link to the [Dummy job portal](https://main--job-portal-dummy-app.netlify.app/)
+
+## APIs
+
+Used [MockApi.io](https://mockapi.io/) for the backend APIs.
+
 ## Available Scripts
 
 In the project directory, you can run:
