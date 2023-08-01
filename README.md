@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Tech stack
+
+React, Tailwind, Typescript
+
 ## Deployed App
 
 App is deployed on netlify and here is the link to the [Dummy job portal](https://main--job-portal-dummy-app.netlify.app/)
