@@ -17,6 +17,7 @@ function App() {
       setLoading(true);
     }
     // to-do move axios handling outside
+    // 1
     axios
       .get(ENDPOINT)
       .then((response) => {
