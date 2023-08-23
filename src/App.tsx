@@ -16,6 +16,7 @@ function App() {
     if (showLoading) {
       setLoading(true);
     }
+    // to-do move axios handling outside
     axios
       .get(ENDPOINT)
       .then((response) => {
